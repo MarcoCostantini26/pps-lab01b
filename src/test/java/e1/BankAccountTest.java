@@ -20,15 +20,15 @@ public class BankAccountTest {
     public static final int NEGATIVE_BALANCE = -500;
     public static final int AMOUNT_910_MONEY = 910;
     public static final int AMOUNT_899_MONEY = 889;
-    private SilverBankAccount account;
-    private GoldBankAccount goldAccount;
-    private BronzeBankAccount bronzeAccount;
+    private CoreBankAccount account;
+    private CoreBankAccount goldAccount;
+    private CoreBankAccount bronzeAccount;
 
     @BeforeEach
     void init(){
-        this.account = new SilverBankAccount();
-        this.goldAccount = new GoldBankAccount();
-        this.bronzeAccount = new BronzeBankAccount();
+        this.account = new CoreBankAccount(new SilverBankAccount());
+        this.goldAccount = new CoreBankAccount(new GoldBankAccount());
+        this.bronzeAccount = new CoreBankAccount(new BronzeBankAccount());
     }
 
     @Test

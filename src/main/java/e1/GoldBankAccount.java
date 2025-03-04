@@ -3,25 +3,29 @@ package e1;
 public class GoldBankAccount implements BankAccount{
 
     public static final int INITIAL_BALANCE = 0;
-    private CoreBankAccount base = new CoreBankAccount(INITIAL_BALANCE);
+    public static final int OVERDRAFT = 500;
+    private int balance;
+
+    public GoldBankAccount() {
+        this.balance = INITIAL_BALANCE;
+    }
 
     @Override
     public int getBalance() {
-        return this.base.getBalance();
+        return this.balance;
     }
 
     @Override
     public void deposit(int amount) {
-        this.base.deposit(amount);
+        this.balance += amount;
     }
 
     @Override
     public void withdraw(int amount) {
-        if(this.getBalance() < amount - 500){
+        if(this.getBalance() < amount - OVERDRAFT){
             throw new IllegalStateException();
         }else{
-            this.base.withdraw(amount);
+            this.balance -= amount;
         }
-
     }
 }

@@ -2,16 +2,21 @@ package e1;
 
 public class BronzeBankAccount implements BankAccount{
     public static final int INITIAL_BALANCE = 0;
-    private CoreBankAccount base = new CoreBankAccount(INITIAL_BALANCE);
+    public static final int FEE = 1;
+    private int balance;
+
+    public BronzeBankAccount() {
+        this.balance = INITIAL_BALANCE;
+    }
 
     @Override
     public int getBalance() {
-        return this.base.getBalance();
+        return this.balance;
     }
 
     @Override
     public void deposit(int amount) {
-        this.base.deposit(amount);
+        this.balance += amount;
     }
 
     @Override
@@ -19,9 +24,9 @@ public class BronzeBankAccount implements BankAccount{
         if(this.getBalance() < amount){
             throw new IllegalStateException();
         } else if (amount < 100 ) {
-            this.base.withdraw(amount);
+            this.balance -= amount;
         } else {
-            this.base.withdraw(amount + 1);
+            this.balance -= (amount + FEE);
         }
 
     }

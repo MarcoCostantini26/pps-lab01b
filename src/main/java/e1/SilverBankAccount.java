@@ -3,20 +3,27 @@ package e1;
 public class SilverBankAccount implements BankAccount{
 
     public static final int INITIAL_BALANCE = 0;
-    private CoreBankAccount base = new CoreBankAccount(INITIAL_BALANCE);
+    public static final int FEE = 1;
+    private int balance;
 
-    public int getBalance() {
-        return base.getBalance();
+    public SilverBankAccount() {
+        this.balance = INITIAL_BALANCE;
     }
 
+    @Override
+    public int getBalance() {
+        return this.balance;
+    }
+
+    @Override
     public void deposit(int amount) {
-        base.deposit(amount);
+        this.balance += amount;
     }
 
     public void withdraw(int amount) {
         if (this.getBalance() < amount){
             throw new IllegalStateException();
         }
-        base.withdraw(amount + 1);
+        this.balance -= (amount + FEE);
     }
 }
