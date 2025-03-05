@@ -13,6 +13,8 @@ public class LogicTest {
   public static final int COL_FOR_NOT_ALLOWED_MOVE = 1;
   public static final int ROW_FOR_TEST_INDEX_OUT_OF_BOUND = -1;
   public static final int COL_FOR_TEST_INDEX_OUT_OF_BOUND = -1;
+  public static final int ROW_KNIGHT = 0;
+  public static final int COL_KNIGHT = 0;
   private Logics logic;
 
   @BeforeEach
@@ -38,5 +40,22 @@ public class LogicTest {
   @Test
   public void testOutOfBoundKnight(){
     assertThrows(IndexOutOfBoundsException.class, () -> this.logic.hit(ROW_FOR_TEST_INDEX_OUT_OF_BOUND, COL_FOR_TEST_INDEX_OUT_OF_BOUND));
+  }
+
+  @Test
+  public void testHasKnight(){
+    assertAll(
+            () -> assertTrue(this.logic.hasKnight(ROW_KNIGHT, COL_KNIGHT)),
+            () -> assertFalse(this.logic.hasKnight(ROW_PAWN, COL_PAWN))
+    );
+
+  }
+
+  @Test
+  public void testHasPawn(){
+    assertAll(
+            () -> assertTrue(this.logic.hasPawn(ROW_PAWN, COL_PAWN)),
+            () -> assertFalse(this.logic.hasPawn(ROW_KNIGHT, COL_KNIGHT))
+    );
   }
 }
