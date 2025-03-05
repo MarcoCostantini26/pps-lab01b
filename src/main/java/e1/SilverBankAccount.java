@@ -2,8 +2,8 @@ package e1;
 
 public class SilverBankAccount implements BankAccount{
 
-    public static final int INITIAL_BALANCE = 0;
-    public static final int FEE = 1;
+    private static final int INITIAL_BALANCE = 0;
+    private static final int FEE = 1;
     private int balance;
 
     public SilverBankAccount() {

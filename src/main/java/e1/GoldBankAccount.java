@@ -1,9 +1,8 @@
 package e1;
 
 public class GoldBankAccount implements BankAccount{
-
-    public static final int INITIAL_BALANCE = 0;
-    public static final int OVERDRAFT = 500;
+    private static final int INITIAL_BALANCE = 0;
+    private static final int OVERDRAFT = 500;
     private int balance;
 
     public GoldBankAccount() {

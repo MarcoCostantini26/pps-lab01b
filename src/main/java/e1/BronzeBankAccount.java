@@ -1,8 +1,9 @@
 package e1;
 
 public class BronzeBankAccount implements BankAccount{
-    public static final int INITIAL_BALANCE = 0;
-    public static final int FEE = 1;
+    private static final int INITIAL_BALANCE = 0;
+    private static final int FEE = 1;
+    private static final int OVERDRAFT = 100;
     private int balance;
 
     public BronzeBankAccount() {
@@ -23,7 +24,7 @@ public class BronzeBankAccount implements BankAccount{
     public void withdraw(int amount) {
         if(this.getBalance() < amount){
             throw new IllegalStateException();
-        } else if (amount < 100 ) {
+        } else if (amount < OVERDRAFT) {
             this.balance -= amount;
         } else {
             this.balance -= (amount + FEE);
