@@ -5,16 +5,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class LogicTest {
 
-  public static final int ROW_PAWN = 2;
-  public static final int COL_PAWN = 1;
-  public static final int ROW_FOR_MISS_PAWN = 1;
-  public static final int COL_FOR_MISS_PAWN = 2;
-  public static final int ROW_FOR_NOT_ALLOWED_MOVE = 3;
-  public static final int COL_FOR_NOT_ALLOWED_MOVE = 1;
-  public static final int ROW_FOR_TEST_INDEX_OUT_OF_BOUND = -1;
-  public static final int COL_FOR_TEST_INDEX_OUT_OF_BOUND = -1;
-  public static final int ROW_KNIGHT = 0;
-  public static final int COL_KNIGHT = 0;
+  private static final int ROW_PAWN = 2;
+  private static final int COL_PAWN = 1;
+  private static final int ROW_KNIGHT = 0;
+  private static final int COL_KNIGHT = 0;
   private Logics logic;
 
   @BeforeEach
@@ -29,16 +23,22 @@ public class LogicTest {
 
   @Test
   public void testMissPawn(){
+    final int ROW_FOR_MISS_PAWN = 1;
+    final int COL_FOR_MISS_PAWN = 2;
     assertFalse(this.logic.hit(ROW_FOR_MISS_PAWN, COL_FOR_MISS_PAWN));
   }
 
   @Test
   public void testNotAllowedMoveForKnight(){
+    final int ROW_FOR_NOT_ALLOWED_MOVE = 3;
+    final int COL_FOR_NOT_ALLOWED_MOVE = 1;
     assertFalse(this.logic.hit(ROW_FOR_NOT_ALLOWED_MOVE, COL_FOR_NOT_ALLOWED_MOVE));
   }
 
   @Test
   public void testOutOfBoundKnight(){
+    final int ROW_FOR_TEST_INDEX_OUT_OF_BOUND = -1;
+    final int COL_FOR_TEST_INDEX_OUT_OF_BOUND = -1;
     assertThrows(IndexOutOfBoundsException.class, () -> this.logic.hit(ROW_FOR_TEST_INDEX_OUT_OF_BOUND, COL_FOR_TEST_INDEX_OUT_OF_BOUND));
   }
 
