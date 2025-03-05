@@ -7,6 +7,12 @@ public class LogicTest {
 
   public static final int ROW_PAWN = 2;
   public static final int COL_PAWN = 1;
+  public static final int ROW_FOR_MISS_PAWN = 1;
+  public static final int COL_FOR_MISS_PAWN = 2;
+  public static final int ROW_FOR_NOT_ALLOWED_MOVE = 3;
+  public static final int COL_FOR_NOT_ALLOWED_MOVE = 1;
+  public static final int ROW_FOR_TEST_INDEX_OUT_OF_BOUND = -1;
+  public static final int COL_FOR_TEST_INDEX_OUT_OF_BOUND = -1;
   private Logics logic;
 
   @BeforeEach
@@ -17,5 +23,20 @@ public class LogicTest {
   @Test
   public void testHitPawn(){
     assertTrue(this.logic.hit(ROW_PAWN, COL_PAWN));
+  }
+
+  @Test
+  public void testMissPawn(){
+    assertFalse(this.logic.hit(ROW_FOR_MISS_PAWN, COL_FOR_MISS_PAWN));
+  }
+
+  @Test
+  public void testNotAllowedMoveForKnight(){
+    assertFalse(this.logic.hit(ROW_FOR_NOT_ALLOWED_MOVE, COL_FOR_NOT_ALLOWED_MOVE));
+  }
+
+  @Test
+  public void testOutOfBoundKnight(){
+    assertThrows(IndexOutOfBoundsException.class, () -> this.logic.hit(ROW_FOR_TEST_INDEX_OUT_OF_BOUND, COL_FOR_TEST_INDEX_OUT_OF_BOUND));
   }
 }
