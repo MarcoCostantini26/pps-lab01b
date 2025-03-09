@@ -1,25 +1,25 @@
 package e1;
 
 public class BankDecorator implements BankAccount{
-    public static final int INITIAL_BALANCE = 0;
-    private int balance;
+    private static final int INITIAL_BALANCE = 0;
+    private final BankAccount base;
 
     public BankDecorator() {
-        this.balance = INITIAL_BALANCE;
+        this.base = new CoreBankAccount(INITIAL_BALANCE);
     }
 
     @Override
     public int getBalance() {
-        return this.balance;
+        return base.getBalance();
     }
 
     @Override
     public void deposit(int amount) {
-        this.balance += amount;
+        base.deposit(amount);
     }
 
     @Override
     public void withdraw(int amount) {
-        this.balance -= amount;
+        base.withdraw(amount);
     }
 }

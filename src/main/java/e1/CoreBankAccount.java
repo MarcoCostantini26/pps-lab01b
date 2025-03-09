@@ -1,22 +1,22 @@
 package e1;
 
-class CoreBankAccount {
+class CoreBankAccount implements BankAccount{
+    private static final int INITIAL_BALANCE = 0;
+    private int balance;
 
-    private final BankAccount bankAccount;
-
-    public CoreBankAccount(BankAccount bankAccount) {
-        this.bankAccount = bankAccount;
+    public CoreBankAccount(int balance) {
+        this.balance = INITIAL_BALANCE;
     }
 
     public int getBalance() {
-        return this.bankAccount.getBalance();
+        return this.balance;
     }
 
     public void deposit(int amount) {
-        this.bankAccount.deposit(amount);
+        this.balance += amount;
     }
 
     public void withdraw(int amount) {
-        this.bankAccount.withdraw(amount);
+        this.balance -= amount;
     }
 }

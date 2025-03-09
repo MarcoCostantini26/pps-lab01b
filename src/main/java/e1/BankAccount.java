@@ -1,7 +1,6 @@
 package e1;
 
 public interface BankAccount {
-
     /**
      * Get balance
      *
